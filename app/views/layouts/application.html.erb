@@ -1,25 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+  <li><a href="#!">one</a></li>
+  <li><a href="#!">two</a></li>
+  <li class="divider"></li>
+  <li><a href="#!">three</a></li>
+</ul>
+<div class="navbar-fixed">
+<nav>
+  <div class="nav-wrapper">
+    <a href="#!" class="brand-logo">Catnapp</a>
+    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+    <ul class="right hide-on-med-and-down">
+      <!-- Dropdown Trigger -->
+      <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Drop<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
+      <% if user_signed_in? %>
+        <li>
+        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+        </li>
+        <% else %>
+        <li>
+        <%= link_to('Login', new_user_session_path)  %>  
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
+</div>
   <title>Catnapp</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <%= csrf_meta_tags %>
 </head>
 <body>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-<% if user_signed_in? %>
-  <li>
-  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
-  </li>
-<% else %>
-  <li>
-  <%= link_to('Login', new_user_session_path)  %>  
-  </li>
-<% end %>
-
 <%= yield %>
-
 </body>
 </html>
