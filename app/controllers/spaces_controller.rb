@@ -72,37 +72,3 @@ class SpacesController < ApplicationController
       params.require(:space).permit(:address, :rate, :description, :user_id)
     end
 end
-
-#   def index
-#     respond_to do |format|
-#       format.html
-#       format.json { render :json => Space.all}
-#     end
-#   end
-
-#   def create
-#     @space = Space.create(space_params)
-#     render :json => space
-#   end
-
-#   def update
-#     @space = Space.find(params[:id])
-#     space.update(space_params)
-
-#     render :json => space
-#   end
-
-#   def destroy
-#     @space = Space.find(params[:id])
-#     space.destroy
-
-#     render :json => space
-#   end
-
-#   private
-
-#   def space_params
-#     params.require(:space).permit(:address, :rate, :description, :user_id)
-#   end
-
-# end

@@ -37,18 +37,24 @@
 </head>
 <body>
 
-
-  <div id="welcome-video">
-    <iframe class="materialboxed" src="https://www.youtube.com/embed/keO6egndYrE" frameborder="0" allowfullscreen></iframe>
-  </div>
-  <div id="map-wrap">
-  <div id="map-canvas"></div>
-  </div>
-
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
-<%= yield %>
+  <div class="parallax-container">
+      <div class="parallax"><img src="http://www.hdwallpapers.in/walls/relax-HD.jpg"></div>
+    </div>
+
+  <div id="welcome-video">
+   <iframe class="materialboxed" src="https://www.youtube.com/embed/E2QhYyQrC48?rel=0&showinfo=0&autohide=1" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <div class="map-wrap">
+  <div class="spaces-li">
+  <%= yield %>
+  </div>
+  <div id="map-canvas"></div>
+  </div>
+
+
 
 
 

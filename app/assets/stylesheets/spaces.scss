@@ -1,5 +1,5 @@
 .nav-wrapper {
-	background-color: #DC143C;
+	background-color: #00CED1;
 }
 
  body {
@@ -7,25 +7,33 @@
 }
 
 #welcome-video {
-	height: 500px;
+	height: 400px;
 	width: 100%;
 	border: 1px solid black;
 
 	.materialboxed {
-		height: 500px;
+		height: 400px;
 		width: 100%;
 	}
 }
 
-#map-wrap {
-	height: 500px;
+.map-wrap {
 	width: 100%;
-	border: 1px solid black;
-}
 
 #map-canvas {
-	margin: 0 auto;
+	float: left;
 	height: 400px;
-	width: 1100px;
+	width: 50%;
 }
+
+.spaces-li {
+	float: right;
+	height: 400px;
+	width: 50%;
+}
+}
+
+.parallax-container {
+	height: 5000px;
+    }
 
