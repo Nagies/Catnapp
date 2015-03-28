@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
-<h1>Spaces Near You</h1>
-  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false">
+<h3 class="list-space">List your space</h3>  
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false">
   </script>
 
 <table>
@@ -19,7 +19,6 @@
         <td><%= space.address %></td>
         <td><%= space.rate %></td>
         <td><%= space.description %></td>
-        <td><%= space.user_id %></td>
         <td><%= link_to 'Show', space %></td>
         <td><%= link_to 'Edit', edit_space_path(space) %></td>
         <td><%= link_to 'Destroy', space, method: :delete, data: { confirm: 'Are you sure?' } %></td>

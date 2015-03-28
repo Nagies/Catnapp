@@ -1,39 +1,50 @@
 .nav-wrapper {
+	height: 40px;
 	background-color: #00CED1;
 }
 
  body {
-    background-color: #f5f5f5; 
+    background-color: #bdbdbd; 
+
+    .splash {
+    	background-color: #212121;
+
+.near-you {
+	
+	h5 {
+		margin: 0 auto;
+		color: #f5f5f5;
+		text-align: center;
+		display: block;
+	   }
 }
-
-#welcome-video {
-	height: 400px;
-	width: 100%;
-	border: 1px solid black;
-
-	.materialboxed {
-		height: 400px;
-		width: 100%;
-	}
-}
-
-.map-wrap {
-	width: 100%;
 
 #map-canvas {
-	float: left;
+	margin: 0 auto;
 	height: 400px;
-	width: 50%;
+	width: 75%;
+	border-radius: 5px;
+	border: 1px solid black;
 }
 
-.spaces-li {
-	float: right;
-	height: 400px;
-	width: 50%;
-}
 }
 
-.parallax-container {
-	height: 5000px;
-    }
+.row {
+	padding-top: 10px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.yield {
+
+	border-top: 2px solid black;	
+
+	.list-space {
+		text-align: center;
+	}
+
+}
+
+
+}
 

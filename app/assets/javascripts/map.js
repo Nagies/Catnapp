@@ -25,7 +25,7 @@ function handleSearchResults(results, status){
 function performSearch(){
 	var request = {
 		bounds: map.getBounds(),
-		name: "Chipotle Mexican Grill"
+		name: "Dunkin' Donuts"
 	}
 
 	service.nearbySearch(request, handleSearchResults);
