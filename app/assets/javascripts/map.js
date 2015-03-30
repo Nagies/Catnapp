@@ -2,38 +2,51 @@ var map;
 var service;
 
 
-function handleSearchResults(results, status){
+function initialize(){
 	// console.log(results);
 
-	for(var i =0; i < results.length; i++){
-		var marker = new google.maps.Marker({
-			position: results[i].geometry.location,
-			map: map,
-			icon: "http://i.imgur.com/XzDJvi2.png?2"
-		})
+	$.ajax({
+		url: '/spaces',
+		type: 'GET',
+		dataType: 'json',
+		success: function (results) {
 
-		google.maps.event.addListener(marker, 'click', function() {
-			// alert(marker.position);
-			// $.ajax({
-			// 	url: 
-			// 	data: 'GET',
+			$.each(results, function(i, result){
+				var marker = new google.maps.Marker({
+					position: new google.maps.LatLng(result.lat, result.lng),
+					map: map,
+					icon: "http://i.imgur.com/XzDJvi2.png?2"
+				})
 
-			// })
-  		});
-	}
+				google.maps.event.addListener(marker, 'click', function() {
+					var $space_img = $('<img>').attr({'src': result.image, width: '100%'}).addClass('m4 col');
+					var $space_info = $('<dl>').addClass('m8 col');
+					$space_info.append($('<dt>').text('Email')).append($('<dd>').text(result.email));
+					$space_info.append($('<dt>').text('Address')).append($('<dd>').text(result.address));
+					$space_info.append($('<dt>').text('Description')).append($('<dd>').text(result.description));
+
+					$('#space_info').empty();
+					$('#space_info').append($space_img);
+					$('#space_info').append($space_info);	
+
+				})
+			})
+		}
+	})
 }
 
-function performSearch(){
-	var request = {
-		bounds: map.getBounds(),
-		name: "Dunkin' Donuts"
-	}
 
-	service.nearbySearch(request, handleSearchResults);
-}
+// function performSearch(){
+// 	var request = {
+// 		bounds: map.getBounds(),
+// 		name: "Dunkin' Donuts"
+// 	}
+
+// 	service.nearbySearch(request, handleSearchResults);
+// }
 
 function renderMap(position){
-	
+
 	console.log(position);
 
 	var currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -53,7 +66,7 @@ function renderMap(position){
 	service = new google.maps.places.PlacesService(map);
 
 	// This ensures that the map bounds have been initialized before we begin the search.
-	google.maps.event.addListenerOnce(map, 'bounds_changed', performSearch);
+	google.maps.event.addListenerOnce(map, 'bounds_changed', initialize);
 
 	// Circles are fun...
 	var circleOptions = {
