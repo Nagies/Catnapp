@@ -1,31 +1,118 @@
-<h3 class="list-space">List your space</h3>  
-<script src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false">
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false">
   </script>
+<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+  <li><a href="#!">View Spaces</a></li>
+  <li><a href="#!">List a Space</a></li>
+  <li class="divider"></li>
+  <li><a href="#!">My profile</a></li>
+</ul>
+<div class="navbar-fixed">
+<nav>
+  <div class="nav-wrapper">
+    <a href="#!" class="brand-logo">Catnapp</a>
+    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+    <ul class="right hide-on-med-and-down">
+      <!-- Dropdown Trigger -->
+      <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Drop<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
+      <% if user_signed_in? %>
+        <li>
+        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+        </li>
+        <% else %>
+        <li>
+        <%= link_to('Login', new_user_session_path)  %>  
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
+</div>
+  <title>Catnapp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <%= csrf_meta_tags %>
+</head>
+<body>
 
-<table>
-  <thead>
-    <tr>
-      <th>Address</th>
-      <th>Description</th>
-      <th>Rate</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <div class="splash">
+ 
+  <div class="near-you">
+    <h5>Catnapps Near You</h5>
+  </div>
 
-  <tbody>
-    <% @spaces.each do |space| %>
-      <tr>
-        <td><%= space.address %></td>
-        <td><%= space.rate %></td>
-        <td><%= space.description %></td>
-        <td><%= link_to 'Show', space %></td>
-        <td><%= link_to 'Edit', edit_space_path(space) %></td>
-        <td><%= link_to 'Destroy', space, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div id="map-canvas"></div>
+  </div>
 
-<br>
+  </div>
 
-<%= link_to 'New Space', new_space_path %>
+<!--   <div class="parallax-container">
+      <div class="parallax"><img src="http://www.hdwallpapers.in/walls/relax-HD.jpg"></div>
+    </div> -->
+
+  <!-- <div id="welcome-video">
+   <iframe class="materialboxed" src="https://www.youtube.com/embed/E2QhYyQrC48?rel=0&showinfo=0&autohide=1" frameborder="0" allowfullscreen></iframe>
+  </div> -->
+
+     <div class="row">
+
+      <div class="col s4">
+        <img src="http://cdn-img0.streeteasy.com/nyc/image/92/125768892.jpg" width="375" height="200">
+      </div>
+      <div class="col s4">
+        <img src="http://cdn-img2.streeteasy.com/nyc/image/26/117458626.jpg" width="375" height="200">
+      </div>
+      <div class="col s4">
+        <img src="http://cdn-img3.streeteasy.com/nyc/image/99/128126199.jpg" width="375" height="200">
+      </div>
+
+    </div>
+
+     <div class="row">
+
+      <div class="col s4">
+        <img src="http://cdn-img0.streeteasy.com/nyc/image/92/125768892.jpg" width="375" height="200">
+      </div>
+      <div class="col s4">
+        <img src="http://cdn-img2.streeteasy.com/nyc/image/26/117458626.jpg" width="375" height="200">
+      </div>
+      <div class="col s4">
+        <img src="http://cdn-img3.streeteasy.com/nyc/image/99/128126199.jpg" width="375" height="200">
+      </div>
+
+    </div>
+
+     <div class="row">
+
+      <div class="col s4">
+        <img src="http://cdn-img0.streeteasy.com/nyc/image/92/125768892.jpg" width="375" height="200">
+      </div>
+      <div class="col s4">
+        <img src="http://cdn-img2.streeteasy.com/nyc/image/26/117458626.jpg" width="375" height="200">
+      </div>
+      <div class="col s4">
+        <img src="http://cdn-img3.streeteasy.com/nyc/image/99/128126199.jpg" width="375" height="200">
+      </div>
+
+    </div>
+
+</body>
+</html>
+
+<!-- Modal Trigger -->
+  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close">Close</a>
+    </div>
+  </div>
