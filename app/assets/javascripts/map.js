@@ -3,7 +3,7 @@ var service;
 
 
 function handleSearchResults(results, status){
-	console.log(results);
+	// console.log(results);
 
 	for(var i =0; i < results.length; i++){
 		var marker = new google.maps.Marker({
@@ -11,15 +11,16 @@ function handleSearchResults(results, status){
 			map: map,
 			icon: "http://i.imgur.com/XzDJvi2.png?2"
 		})
+
+		google.maps.event.addListener(marker, 'click', function() {
+			// alert(marker.position);
+			// $.ajax({
+			// 	url: 
+			// 	data: 'GET',
+
+			// })
+  		});
 	}
-
-	// var contentString = '<div id="infowindow-content">' +
- //    '<p>Address: ' + results[i].vicinity + '</p>' +
- //    '</div>';
-
- //    var infowindow = new google.maps.InfoWindow({
- //      content: contentString
- //    });
 }
 
 function performSearch(){
@@ -32,6 +33,7 @@ function performSearch(){
 }
 
 function renderMap(position){
+	
 	console.log(position);
 
 	var currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -43,7 +45,7 @@ function renderMap(position){
 
 	map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
-	var marker = new google.maps.Marker({
+	var markerMe = new google.maps.Marker({
 		position: currentLocation,
 		map: map
 	});
