@@ -20,10 +20,12 @@ function initialize(){
 
 				google.maps.event.addListener(marker, 'click', function() {
 					var $space_img = $('<img>').attr({'src': result.image, width: '100%'}).addClass('m4 col');
-					var $space_info = $('<dl>').addClass('m8 col');
+					var $space_info = $('<dl>').addClass('m8 col').css("color", "white");
 					$space_info.append($('<dt>').text('Email')).append($('<dd>').text(result.email));
 					$space_info.append($('<dt>').text('Address')).append($('<dd>').text(result.address));
 					$space_info.append($('<dt>').text('Description')).append($('<dd>').text(result.description));
+					$space_info.append($('<dt>').text('Rate')).append($('<dd>').text(result.rate));
+
 
 					$('#space_info').empty();
 					$('#space_info').append($space_img);
