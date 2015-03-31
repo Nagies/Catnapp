@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <div class="navbar-fixed">
     <nav>
       <div class="nav-wrapper">
         <a href="#!" class="brand-logo">Catnapp</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
         
         <ul class="right hide-on-med-and-down">
+          <li><a href="#map-page">View Spaces</a></li>
           <li><a href="#new_space">Create Spaces</a></li>
           <% if user_signed_in? %>
             <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
@@ -26,7 +26,6 @@
         </ul>
       </div>
     </nav>
-  </div>
 
   <title>Catnapp</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -36,7 +35,11 @@
 </head>
 <body>
 
-  <div class="splash">
+  <div id="front-page" class="fullscreen">
+    <img src="https://download.unsplash.com/photo-1423483641154-5411ec9c0ddf">  
+  </div>
+
+  <div id="map-page" class="fullscreen">
     <div class="near-you">
       <h5>Catnapps Near You</h5>
     </div>
@@ -44,12 +47,13 @@
     <div id="map-canvas"></div>
   </div>
 
-  <div class="container">
-    <div id="space_info" class="row"></div>
-  </div>
+  <div id="host-page" class="fullscreen">
+    <div class="container">
+      <div id="space_info" class="row"></div>
+    </div>
 
-  <div class="container">
-    <h3 class="host-your-space">Host your space</h3>
+    <div class="container">
+      <h3 class="host-your-space">Host your space</h3>
 
       <%= form_for Space.new do |f| %>
 
@@ -80,8 +84,16 @@
       </div>
       <% end %>
 
+    </div>
   </div>
 
-
 </body>
+
+<footer>
+  <div class="footer-copyright">
+    <div class="container">
+      © 2015 Copyright Text
+    </div>  
+</footer>
+
 </html>
