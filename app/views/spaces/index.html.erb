@@ -7,8 +7,7 @@
       <a href="#!" class="brand-logo">Catnapp</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="sass.html">View Spaces</a></li>
-        <li><a href="components.html">Create Spaces</a></li>
+        <li><a href="#new_space">Create Spaces</a></li>
          <% if user_signed_in? %>
         <li>
         <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
@@ -22,8 +21,7 @@
         <li><a href="mobile.html">Mobile</a></li> -->
       </ul>
       <ul class="side-nav" id="mobile-demo">
-        <li><a href="#view">View Spaces</a></li>
-        <li><a href="#create">Create Spaces</a></li>
+        <li><a href="#new_space">Create Spaces</a></li>
      <!--    <li><a href="javascript.html">Javascript</a></li>
         <li><a href="mobile.html">Mobile</a></li> -->
       <% if user_signed_in? %>
@@ -101,22 +99,11 @@
 
     </div> -->
 
-    <div class="create-container">
+    <div class="container">
 
       <h3 class="host-your-space">Host your space</h3>
 
       <%= form_for Space.new do |f| %>
-      <% if Space.new.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@space.errors.count, "error") %> prohibited this space from being saved:</h2>
-
-        <ul>
-          <% Space.new.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-      <% end %>
 
       <div class="field">
         <%= f.label :address %><br>
@@ -130,10 +117,16 @@
         <%= f.label :description %><br>
         <%= f.text_area :description %>
       </div>
-      <div class="field">
-        <%= f.label :user_id %><br>
-        <%= f.number_field :user_id %>
+       <div class="field">
+        <%= f.label :image %><br>
+        <%= f.text_area :image %>
       </div>
+       <div class="field">
+        <%= f.label :email %><br>
+        <%= f.text_area :email %>
+      </div>
+        <%= f.hidden_field :lat %>
+        <%= f.hidden_field :lng %>
       <div class="actions">
         <%= f.submit %>
       </div>
