@@ -2,106 +2,54 @@
 <html>
 <head>
   <div class="navbar-fixed">
-  <nav>
-    <div class="nav-wrapper">
-      <a href="#!" class="brand-logo">Catnapp</a>
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#new_space">Create Spaces</a></li>
-         <% if user_signed_in? %>
-        <li>
-        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
-        </li>
-        <% else %>
-        <li>
-        <%= link_to('Login', new_user_session_path)  %>  
-        </li>
-      <% end %>
-        <!-- <li><a href="javascript.html">Javascript</a></li>
-        <li><a href="mobile.html">Mobile</a></li> -->
-      </ul>
-      <ul class="side-nav" id="mobile-demo">
-        <li><a href="#new_space">Create Spaces</a></li>
-     <!--    <li><a href="javascript.html">Javascript</a></li>
-        <li><a href="mobile.html">Mobile</a></li> -->
-      <% if user_signed_in? %>
-        <li>
-        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
-        </li>
-        <% else %>
-        <li>
-        <%= link_to('Login', new_user_session_path)  %>  
-        </li>
-      <% end %>
-      </ul>
-    </div>
-  </nav>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#!" class="brand-logo">Catnapp</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+        
+        <ul class="right hide-on-med-and-down">
+          <li><a href="#new_space">Create Spaces</a></li>
+          <% if user_signed_in? %>
+            <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+          <% else %>
+          <li><%= link_to('Login', new_user_session_path)  %></li>
+          <% end %>
+        </ul>
+       
+        <ul class="side-nav" id="mobile-demo">
+          <li><a href="#new_space">Create Spaces</a></li>
+          <% if user_signed_in? %>
+            <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+          <% else %>
+            <li><%= link_to('Login', new_user_session_path)  %></li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
   </div>
+
   <title>Catnapp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-  <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <%= csrf_meta_tags %>
 </head>
 <body>
 
   <div class="splash">
- 
-  <div class="near-you">
-    <h5>Catnapps Near You</h5>
-  </div>
+    <div class="near-you">
+      <h5>Catnapps Near You</h5>
+    </div>
 
-  <div id="map-canvas"></div>
+    <div id="map-canvas"></div>
   </div>
 
   <div class="container">
-
-  <div id="space_info" class="row">
-  </div>
-  
+    <div id="space_info" class="row"></div>
   </div>
 
-  </div>
-
-<!--   <div class="parallax-container">
-      <div class="parallax"><img src="http://www.hdwallpapers.in/walls/relax-HD.jpg"></div>
-    </div> -->
-
-  <!-- <div id="welcome-video">
-   <iframe class="materialboxed" src="https://www.youtube.com/embed/E2QhYyQrC48?rel=0&showinfo=0&autohide=1" frameborder="0" allowfullscreen></iframe>
-  </div> -->
-
-  <!--    <div class="row">
-
-      <div class="col s4">
-        <img src="http://cdn-img0.streeteasy.com/nyc/image/92/125768892.jpg" width="375" height="200">
-      </div>
-      <div class="col s4">
-        <img src="http://cdn-img2.streeteasy.com/nyc/image/26/117458626.jpg" width="375" height="200">
-      </div>
-      <div class="col s4">
-        <img src="http://cdn-img3.streeteasy.com/nyc/image/99/128126199.jpg" width="375" height="200">
-      </div>
-
-    </div>
-
-     <div class="row">
-
-      <div class="col s4">
-        <img src="http://cdn-img0.streeteasy.com/nyc/image/92/125768892.jpg" width="375" height="200">
-      </div>
-      <div class="col s4">
-        <img src="http://cdn-img2.streeteasy.com/nyc/image/26/117458626.jpg" width="375" height="200">
-      </div>
-      <div class="col s4">
-        <img src="http://cdn-img3.streeteasy.com/nyc/image/99/128126199.jpg" width="375" height="200">
-      </div>
-
-    </div> -->
-
-    <div class="container">
-
-      <h3 class="host-your-space">Host your space</h3>
+  <div class="container">
+    <h3 class="host-your-space">Host your space</h3>
 
       <%= form_for Space.new do |f| %>
 
@@ -132,7 +80,7 @@
       </div>
       <% end %>
 
-    </div>
+  </div>
 
 
 </body>
