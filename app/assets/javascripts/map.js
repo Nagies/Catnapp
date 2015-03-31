@@ -1,7 +1,11 @@
 var map;
 
+$(document).ready(function (){
+	navigator.geolocation.getCurrentPosition(renderMap);
+	$('form#new_space').on('submit', createSpace);
+});
+
 function loadSpaces(){
-	// console.log(results);
 
 	$.ajax({
 		url: '/spaces',
@@ -14,60 +18,52 @@ function loadSpaces(){
 					position: new google.maps.LatLng(result.lat, result.lng),
 					map: map,
 					icon: "http://i.imgur.com/XzDJvi2.png?2"
-				})
+					});
+
 				clickEvent(result, marker);
-			})
+
+			});
 		}
-	})
-}
+	});
+} 
 
 function createSpace(event){
-	var newSpaceForm = $('form#new_space')
-	if (event){ event.preventDefault(); }
-	geocoder = new google.maps.Geocoder();
-	geocoder.geocode ({ 'address' : newSpaceForm.find('#space_address').val()}, function(results, status) {
-		if (status == google.maps.GeocoderStatus.OK) {
-			newSpaceForm.find('#space_lat').val(results[0].geometry.location.lat());
-			newSpaceForm.find('#space_lng').val(results[0].geometry.location.lng());
-			$.ajax({
-				url: '/spaces',
-				type: 'POST',
-				dataType: 'json',
-				data: newSpaceForm.serialize(),
-				success: function (space) {
-					console.log(space);
-					var marker = new google.maps.Marker({
-						position: new google.maps.LatLng(space.lat, space.lng),
-						map: map,
-						icon: "http://i.imgur.com/XzDJvi2.png?2"
-					})
+
+	var newSpaceForm = $('form#new_space');
+	if (event) { event.preventDefault(); }
+		geocoder = new google.maps.Geocoder();
+		geocoder.geocode ({ 'address' : newSpaceForm.find('#space_address').val()}, function(results, status) {
+			if (status == google.maps.GeocoderStatus.OK) {
+				newSpaceForm.find('#space_lat').val(results[0].geometry.location.lat());
+				newSpaceForm.find('#space_lng').val(results[0].geometry.location.lng());
+			
+				$.ajax({
+					url: '/spaces',
+					type: 'POST',
+					dataType: 'json',
+					data: newSpaceForm.serialize(),
+					success: function (space) {
+						console.log(space);
+						var marker = new google.maps.Marker({
+							position: new google.maps.LatLng(space.lat, space.lng),
+							map: map,
+							icon: "http://i.imgur.com/XzDJvi2.png?2"
+						});
 
 					clickEvent(space, marker);
-				}
-			})
-		} else {
-			// Error condition to do...
 
-			
-		}
-
+					}
+				});
+			} else {
+			// Error condition
+			alert('Something went wrong');
+			}
 	})
 }
-
-
-// function performSearch(){
-// 	var request = {
-// 		bounds: map.getBounds(),
-// 		name: "Dunkin' Donuts"
-// 	}
-
-// 	service.nearbySearch(request, handleSearchResults);
-// }
 
 function renderMap(position){
 
 	console.log(position);
-
 	var currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 	var mapOptions = {
 		center: currentLocation,
@@ -83,12 +79,9 @@ function renderMap(position){
 		map: map
 	});
 
-	// service = new google.maps.places.PlacesService(map);
-
-	// This ensures that the map bounds have been initialized before we begin the search.
 	google.maps.event.addListenerOnce(map, 'bounds_changed', loadSpaces);
 
-	// Circles are fun...
+	// Drawing a circle around our current location. FUN!
 	var circleOptions = {
 		strokeColor: "#0000FF",
 		strokeOpacity: 0.8,
@@ -103,35 +96,6 @@ function renderMap(position){
 	var circle = new google.maps.Circle(circleOptions);
 }
 
-// function toggleBounce(){
-// 	if (marker.getAnimation() !== null) {
-// 		marker.setAnimation(null);
-// 	} else {
-// 		marker.setAnimation(google.maps.Animation.BOUNCE);
-// 	}
-// }
-
-// function setMarkers(map, infowindow) {
-// 	var marker = new google.maps.Marker({
-// 		position: new google.maps.LatLng(
-// 			venue.location.lat,
-// 			venue.location.lng
-// 			),
-// 		map: map,
-// 		title: space.all,
-// 		icon: "http://i.imgur.com/XzDJvi2.png?2",
-// 		animation: google.maps.Animation.DROP
-// 	});
-// 	attachInfo(infowindow, map, marker);
-// }
-
-// function attachInfo(infowindow, map, marker) {
-// 	google.maps.event.addListenerOnce(marker, 'click', function() {
-// 		infowindow.close();
-// 		infowindow.open(map, );
-// 	});
-// }
-
 function clickEvent(result, marker) {
 
 	google.maps.event.addListener(marker, 'click', function() {
@@ -144,17 +108,10 @@ function clickEvent(result, marker) {
 		$('#space_info').empty();
 		$('#space_info').append($space_img);
 		$('#space_info').append($space_info);	
-
-	})
-
+	});
 }
 
 
-
-$(document).ready(function (){
-	navigator.geolocation.getCurrentPosition(renderMap);
-	$('form#new_space').on('submit', createSpace);
-});
 
 
 
