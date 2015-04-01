@@ -69,6 +69,6 @@ class SpacesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def space_params
-      params.require(:space).permit(:address, :rate, :description, :lat, :lng, :image)
+      params.require(:space).permit(:address, :rate, :description, :lat, :lng, :image, :email)
     end
 end

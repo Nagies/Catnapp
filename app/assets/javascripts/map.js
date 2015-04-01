@@ -65,6 +65,7 @@ function renderMap(position){
 
 	console.log(position);
 	var currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	// Map options object to hold a number of map properties
 	var mapOptions = {
 		center: currentLocation,
 		zoom: 14,
@@ -72,6 +73,8 @@ function renderMap(position){
 		scrollwheel: false
 	};
 
+	// Create a JavaScript "map" object, passing it the div element and the map properties.
+	// map is a global variable
 	map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
 	var markerMe = new google.maps.Marker({
@@ -79,6 +82,7 @@ function renderMap(position){
 		map: map
 	});
 
+	// We use an event listener to load the map after the page has loaded.
 	google.maps.event.addListenerOnce(map, 'bounds_changed', loadSpaces);
 
 	// Drawing a circle around our current location. FUN!
@@ -101,19 +105,15 @@ function clickEvent(result, marker) {
 	google.maps.event.addListener(marker, 'click', function() {
 		var $space_img = $('<img>').attr({'src': result.image, width: '100%'}).addClass('m4 col');
 		var $space_info = $('<dl>').addClass('m8 col').css("color", "white");
-		$space_info.append($('<dt>').text('Email')).append($('<dd>').text(result.email));
 		$space_info.append($('<dt>').text('Address')).append($('<dd>').text(result.address));
+		$space_info.append($('<dt>').text('Hourly Rate')).append($('<dd>').text('$' + result.rate));
 		$space_info.append($('<dt>').text('Description')).append($('<dd>').text(result.description));
-		$space_info.append($('<dt>').text('Rate')).append($('<dd>').text(result.rate));
+		$space_info.append($('<dt>').text('Host Email')).append($('<dd>').text(result.email));
 		$('#space_info').empty();
 		$('#space_info').append($space_img);
 		$('#space_info').append($space_info);	
 	});
 }
-
-
-
-
 
 
 

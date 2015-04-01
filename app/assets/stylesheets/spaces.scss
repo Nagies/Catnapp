@@ -25,7 +25,7 @@ body {
 		}
 	}
 
-	#map-page {
+	#map-page { 
 		background-color: #212121;
 
 		.near-you {
@@ -39,8 +39,8 @@ body {
 		
 		#map-canvas {
 			margin: 0 auto;
-			height: 600px;
-			width: 85%;
+			height: 400px;
+			width: 75%;
 			border-radius: 5px;
 			border: 1px solid black;
 		}
@@ -61,13 +61,6 @@ body {
 		h1 {
 			text-align: center;
 		}
-	}
-
-	.yield {
-		border-top: 2px solid black;	
-			.list-space {
-				text-align: center;
-			}
 	}
 }
 
