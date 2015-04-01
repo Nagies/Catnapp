@@ -57,6 +57,7 @@ body {
 
 	#about {
 		background-color: #80cbc4;
+		padding-top: 275px;
 
 		h1 {
 			text-align: center;
@@ -65,9 +66,16 @@ body {
 }
 
 	.footer-copyright {
-		height: 35px;
+		background-color: #ee6e73;
+		height: 45px;
+
+		h5 {
+			color: #f5f5f5;
+		}
 	}
 
 }
+
+
 
 
