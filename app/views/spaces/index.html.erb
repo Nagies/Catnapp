@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <nav class="navbar-fixed">
     <nav>
       <div class="nav-wrapper">
-        <a href="#!" class="brand-logo">Catnapp</a>
+        <a href="#front-page" class="brand-logo">Catnapp</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
         
         <ul class="right hide-on-med-and-down">
           <li><a href="#map-page">View Spaces</a></li>
           <li><a href="#new_space">Create Spaces</a></li>
+          <li><a href="#about">About</a></li>
           <% if user_signed_in? %>
             <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
           <% else %>
@@ -26,6 +28,7 @@
         </ul>
       </div>
     </nav>
+  </nav>
 
   <title>Catnapp</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -36,7 +39,8 @@
 <body>
 
   <div id="front-page" class="fullscreen">
-    <img src="https://download.unsplash.com/5/nose-up.jpg">  
+<!--     <h3>Welcome to Catnapp</h3>
+ -->    <img src="https://download.unsplash.com/5/nose-up.jpg"> 
   </div>
 
   <div id="map-page" class="fullscreen">
@@ -85,6 +89,11 @@
       <% end %>
 
     </div>
+  </div>
+
+  <div id="about" class="fullscreen">
+    <h1>About Catnapp</h1>
+    <p>Catnapp is a web application that allows you to take a break from the daily grind and relax, whether that means taking a power nap or just having a quiet space to relax and do as you please. Catnapp takes your current location and finds nearby hosts that will allow you to rent their space/room for a specified period of time. These hosts will have user reviews and user comments as well as a personal profile. This is so that you (user) can see more information about the host, put a face to the space, and be put at ease during the duration of your stay.</p>
   </div>
 
 </body>
