@@ -9,7 +9,7 @@
         
         <ul class="right hide-on-med-and-down">
           <li><a href="#map-page">View Spaces</a></li>
-          <li><a href="#new_space">Create Spaces</a></li>
+          <li><a href="#host-page">Create Spaces</a></li>
           <li><a href="#about">About</a></li>
           <% if user_signed_in? %>
             <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
@@ -38,8 +38,9 @@
 </head>
 <body>
 
+  <div class="header"></div>
+
   <div id="front-page" class="fullscreen">
-<!--     <h3>Welcome to Catnapp</h3> -->    
     <img src="https://download.unsplash.com/5/nose-up.jpg"> 
   </div>
 
@@ -48,18 +49,11 @@
       <h5>Catnapps Near You</h5>
     </div>
 
-<!--     This div holds the map -->
   <div id="map-canvas"></div>
     <div class="container">
       <div id="space_info" class="row"></div>
     </div>
   </div>
-
-<!--   <br>
-  <br>
-  <br>
-  <br>
-  <br> -->
 
   <div id="host-page" class="fullscreen">
     <div class="container">
