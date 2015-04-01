@@ -27,19 +27,11 @@ body {
 
 	#map-page { 
 		background-color: #212121;
-
-		.near-you {
-			h5 {
-				margin: 0 auto;
-				color: #f5f5f5;
-				text-align: center;
-				display: block;
-			}
-		}
 		
 		#map-canvas {
 			margin: 0 auto;
-			height: 620px;
+			display: block;
+			height: 600px;
 			width: 85%;
 			border-radius: 5px;
 			border: 1px solid black;
