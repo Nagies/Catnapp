@@ -3,7 +3,6 @@ html {
 
 	.nav-wrapper {
 		height: 35px;
-		background-color: rgba(66,165,245,0.9);
 	}
 
 body {
@@ -51,12 +50,17 @@ body {
 		background-color: grey;
 
 		.host-your-space {
+			text-align: center;
 			color: #f5f5f5;
 		}
 	}
 
 	#about {
 		background-color: #80cbc4;
+
+		h1 {
+			text-align: center;
+		}
 	}
 
 	.yield {
@@ -69,7 +73,6 @@ body {
 
 	.footer-copyright {
 		height: 35px;
-		background-color: #42a5f5;
 	}
 
 }
