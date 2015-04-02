@@ -108,7 +108,7 @@ function clickEvent(result, marker) {
 	google.maps.event.addListener(marker, 'click', function() {
 		var $space_img = $('<img>').attr({'src': result.image, width: '100%'}).addClass('m4 col');
 		var $space_info = $('<dl>').addClass('m8 col').css("color", "white");
-		var $exit_info = $('<i class="fa fa-times"></i>')
+		var $exit_info = $('<i class="fa fa-times"></i>').css({'color':'red', 'float': 'right'});
 		$space_info.append($('<dt>').text('Address')).append($('<dd>').text(result.address));
 		$space_info.append($('<dt>').text('Hourly Rate')).append($('<dd>').text('$' + result.rate));
 		$space_info.append($('<dt>').text('Description')).append($('<dd>').text(result.description));

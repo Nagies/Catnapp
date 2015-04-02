@@ -3,6 +3,10 @@ html {
 
 	.nav-wrapper {
 		height: 35px;
+
+		.brand-logo {
+			padding-left: 12px;
+		}
 	}
 
 body {
@@ -38,7 +42,8 @@ body {
 		}
 
 		#x {
-			border: 1px solid white;
+			border: 2px solid white;
+
 		}
 	}
 
