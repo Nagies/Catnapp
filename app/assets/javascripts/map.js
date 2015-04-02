@@ -111,7 +111,9 @@ function clickEvent(result, marker) {
 		$space_info.append($('<dt>').text('Host Email')).append($('<dd>').text(result.email));
 		$('#space_info').empty();
 		$('#space_info').append($space_img);
-		$('#space_info').append($space_info);	
+		$('#space_info').append($space_info);
+		$('#map-canvas').css('width', '50%').css('display', 'inline');
+
 	});
 }
 
