@@ -1,6 +1,6 @@
 var map;
 
-$(document).ready(function (){
+$(function (){
 	navigator.geolocation.getCurrentPosition(renderMap);
 	$('form#new_space').on('submit', createSpace);
 });
@@ -29,6 +29,7 @@ function loadSpaces(){
 
 function createSpace(event){
 
+	event.preventDefault();
 	var newSpaceForm = $('form#new_space');
 	if (event) { event.preventDefault(); }
 		geocoder = new google.maps.Geocoder();
@@ -44,6 +45,8 @@ function createSpace(event){
 					data: newSpaceForm.serialize(),
 					success: function (space) {
 						console.log(space);
+						newSpaceForm[0].reset();
+						$('a[href="#map-page"]').trigger('click');
 						var marker = new google.maps.Marker({
 							position: new google.maps.LatLng(space.lat, space.lng),
 							map: map,
@@ -105,15 +108,20 @@ function clickEvent(result, marker) {
 	google.maps.event.addListener(marker, 'click', function() {
 		var $space_img = $('<img>').attr({'src': result.image, width: '100%'}).addClass('m4 col');
 		var $space_info = $('<dl>').addClass('m8 col').css("color", "white");
+		var $exit_info = $('<i class="fa fa-times"></i>')
 		$space_info.append($('<dt>').text('Address')).append($('<dd>').text(result.address));
 		$space_info.append($('<dt>').text('Hourly Rate')).append($('<dd>').text('$' + result.rate));
 		$space_info.append($('<dt>').text('Description')).append($('<dd>').text(result.description));
 		$space_info.append($('<dt>').text('Host Email')).append($('<dd>').text(result.email));
-		$('#space_info').empty();
-		$('#space_info').append($space_img);
-		$('#space_info').append($space_info);
-		$('#map-canvas').css('width', '50%').css('display', 'inline');
+		$space_info.append($exit_info);
+		$('#space_info').empty().append($space_img).append($space_info).show();
+		$('#map-canvas').slideUp();
 
+			$exit_info.on('click', function(e){
+				$('#map-canvas').slideDown(function (){
+					$('#space_info').hide();
+				});
+			});
 	});
 }
 
