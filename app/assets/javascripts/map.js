@@ -50,7 +50,7 @@ function createSpace(event){
 						var marker = new google.maps.Marker({
 							position: new google.maps.LatLng(space.lat, space.lng),
 							map: map,
-							icon: "http://i.imgur.com/XzDJvi2.png?2"
+							icon: "http://i.imgur.com/dUBRbDG.png"
 						});
 
 					clickEvent(space, marker);
@@ -73,7 +73,8 @@ function renderMap(position){
 		center: currentLocation,
 		zoom: 14,
 		mapTypeId: google.maps.MapTypeId.ROADMAP,
-		scrollwheel: false
+		scrollwheel: false,
+		styles: [{"featureType":"landscape","stylers":[{"hue":"#F1FF00"},{"saturation":-27.4},{"lightness":9.4},{"gamma":1}]},{"featureType":"road.highway","stylers":[{"hue":"#0099FF"},{"saturation":-20},{"lightness":36.4},{"gamma":1}]},{"featureType":"road.arterial","stylers":[{"hue":"#00FF4F"},{"saturation":0},{"lightness":0},{"gamma":1}]},{"featureType":"road.local","stylers":[{"hue":"#FFB300"},{"saturation":-38},{"lightness":11.2},{"gamma":1}]},{"featureType":"water","stylers":[{"hue":"#00B6FF"},{"saturation":4.2},{"lightness":-63.4},{"gamma":1}]},{"featureType":"poi","stylers":[{"hue":"#9FFF00"},{"saturation":0},{"lightness":0},{"gamma":1}]}]
 	};
 
 	// Create a JavaScript "map" object, passing it the div element and the map properties.
@@ -106,8 +107,8 @@ function renderMap(position){
 function clickEvent(result, marker) {
 
 	google.maps.event.addListener(marker, 'click', function() {
-		var $space_img = $('<img>').attr({'src': result.image, width: '100%'}).addClass('m4 col');
-		var $space_info = $('<dl>').addClass('m8 col').css("color", "white");
+		var $space_img = $('<img>').attr({'src': result.image, width: '100%'}).addClass('m6 col');
+		var $space_info = $('<dl>').addClass('m6 col').css("color", "white");
 		var $exit_info = $('<i class="fa fa-times"></i>').css({'color':'red', 'float': 'right'});
 		$space_info.append($('<dt>').text('Address')).append($('<dd>').text(result.address));
 		$space_info.append($('<dt>').text('Hourly Rate')).append($('<dd>').text('$' + result.rate));
