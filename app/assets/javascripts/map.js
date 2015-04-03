@@ -107,13 +107,33 @@ function renderMap(position){
 function clickEvent(result, marker) {
 
 	google.maps.event.addListener(marker, 'click', function() {
-		var $space_img = $('<img>').attr({'src': result.image, width: '100%'}).addClass('m6 col');
-		var $space_info = $('<dl>').addClass('m6 col').css("color", "white");
-		var $exit_info = $('<i class="fa fa-times"></i>').css({'color':'red', 'float': 'right'});
-		$space_info.append($('<dt>').text('Address')).append($('<dd>').text(result.address));
-		$space_info.append($('<dt>').text('Hourly Rate')).append($('<dd>').text('$' + result.rate));
-		$space_info.append($('<dt>').text('Description')).append($('<dd>').text(result.description));
-		$space_info.append($('<dt>').text('Host Email')).append($('<dd>').text(result.email));
+		var $space_img = $('<img>').attr({'src': result.image, width: '100%'}).addClass('m6 col offset-m1');
+		var $space_info = $('<div id="space-wrapper">').addClass('m4 col').css({
+			"color": "white",
+			'position': 'relative'
+		});
+		var $exit_info = $('<i class="fa fa-times"></i>').css({
+			'color':'red', 
+			'position': 'absolute',
+			'top': '2px',
+			'right': '-8px'
+		});
+		$space_info.append(
+			$("<div>").append($('<span>').text('Address'))
+					  .append($('<span>').text(result.address))
+		);
+		$space_info.append(
+			$("<div>").append($('<span>').text('Hourly Rate'))
+				      .append($('<span>').text('$' + result.rate))
+		);
+		$space_info.append(
+			$("<div>").append($('<span>').text('Description'))
+					  .append($('<span>').text(result.description))
+		);
+		$space_info.append(
+			$("<div>").append($('<span>').text('Host Email'))
+					  .append($('<span>').text(result.email))
+		);
 		$space_info.append($exit_info);
 		$('#space_info').empty().append($space_img).append($space_info).show();
 		$('#map-canvas').slideUp();

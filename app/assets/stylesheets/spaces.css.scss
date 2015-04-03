@@ -41,6 +41,23 @@ body {
 			border: 1px solid black;
 		}
 
+		#space_info {
+			padding-top: 30px;
+			#space-wrapper div {
+				&:after {
+					clear: both;
+					display: block;
+					content: '';
+				}
+				span:nth-child(odd) {
+					float: left;
+				}
+				span:nth-child(even) {
+					float: right;
+				}
+			}
+		}
+
 		#x {
 			.fa fa-times {
 
