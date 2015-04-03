@@ -110,13 +110,16 @@ function clickEvent(result, marker) {
 		var $space_img = $('<img>').attr({'src': result.image, width: '100%'}).addClass('m6 col offset-m1');
 		var $space_info = $('<div id="space-wrapper">').addClass('m4 col').css({
 			"color": "white",
-			'position': 'relative'
+			'position': 'relative',
+			'font-size': 'larger',
+			'padding-top': '100px'
 		});
 		var $exit_info = $('<i class="fa fa-times"></i>').css({
 			'color':'red', 
 			'position': 'absolute',
 			'top': '2px',
-			'right': '-8px'
+			'right': '-8px',
+			'cursor': 'pointer'
 		});
 		$space_info.append(
 			$("<div>").append($('<span>').text('Address'))
