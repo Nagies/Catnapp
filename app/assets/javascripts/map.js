@@ -1,7 +1,10 @@
 var map;
 
 $(function (){
+	debugger;
+	// Get the current position of your device and render map.
 	navigator.geolocation.getCurrentPosition(renderMap);
+	// Event on submit
 	$('form#new_space').on('submit', createSpace);
 });
 
@@ -28,6 +31,7 @@ function loadSpaces(){
 } 
 
 function createSpace(event){
+	console.log(event);
 
 	event.preventDefault();
 	var newSpaceForm = $('form#new_space');
