@@ -57,45 +57,26 @@ body {
 				}
 			}
 		}
-
-		#x {
-			.fa fa-times {
-
-					.hvr-grow {
-			    display: inline-block;
-			    vertical-align: middle;
-			    transform: translateZ(0);
-			    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-			    backface-visibility: hidden;
-			    -moz-osx-font-smoothing: grayscale;
-			    transition-duration: 0.3s;
-			    transition-property: transform;
-					}
-
-					.hvr-grow:hover,
-					.hvr-grow:focus,
-					.hvr-grow:active {
-				    transform: scale(1.1);
-					}
-				}
-				
-			}
-		}
+	}
 
 	#host-page {
-		background-color: grey;
+		background-color: #FFEFD5;
 
-		.host-your-space {
-			text-align: center;
-			color: #f5f5f5;
+		#host-space-wrapper {
+			padding-top: 80px;
+
+			.host-your-space {
+				text-align: center;
+				color: #212121;
+			}
 		}
 	}
 
 	#about {
 		background-color: #80cbc4;
-		padding-top: 275px;
+		padding-top: 180px;
 
-		h1 {
+		h2 {
 			text-align: center;
 		}
 	}

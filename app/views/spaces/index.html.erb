@@ -54,8 +54,8 @@
   </div>
 
   <div id="host-page" class="fullscreen">
-    <div class="container">
-      <h3 class="host-your-space">Host your space</h3>
+    <div id="host-space-wrapper" class="container">
+      <h2 class="host-your-space">Host your space</h2>
 
       <%= form_for Space.new do |f| %>
 
@@ -65,19 +65,19 @@
       </div>
       <div class="field">
         <%= f.label :rate %><br>
-        <%= f.number_field :rate %>
+        <%= f.text_field :rate %>
       </div>
       <div class="field">
         <%= f.label :description %><br>
-        <%= f.text_area :description %>
+        <%= f.text_field :description %>
       </div>
        <div class="field">
         <%= f.label :image %><br>
-        <%= f.text_area :image %>
+        <%= f.text_field :image %>
       </div>
        <div class="field">
         <%= f.label :email %><br>
-        <%= f.text_area :email %>
+        <%= f.text_field :email %>
       </div>
       <div>
         <%= f.hidden_field :lat %>
@@ -93,8 +93,8 @@
 
   <div id="about" class="fullscreen">
     <div class="container">
-      <h1>About Catnapp</h1>
-      <p>Have you ever been stuck at school, work, or jumping around from meeting to meeting and wished you had a place to just relax? Catnapp is a web application that affords you the  ability to do just that, relax. Catnapp takes your current location and finds nearby hosts that are willing to lend their space for a couple hours at a time. Power nap, study space, it’s up to you. So next time you’re feeling stressed and tired, find a Catnapp near you and reserve a space.</p>
+      <h2>About Catnapp</h2>
+      <p class="flow-text">Have you ever been stuck at school, work, or jumping around from meeting to meeting and wished you had a place to just relax? Catnapp is a web application that affords you the  ability to do just that, relax. Catnapp takes your current location and finds nearby hosts that are willing to lend their space for a couple hours at a time. Power nap, study space, it’s up to you. So next time you’re feeling stressed and tired, find a Catnapp near you and reserve a space.</p>
     </div>
   </div>
 
