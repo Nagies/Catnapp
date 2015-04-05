@@ -5,9 +5,8 @@
   <nav class="navbar-fixed">
     <nav>
       <div class="nav-wrapper">
-        <a href="#front-page" class="brand-logo">Catnapp</a>
-        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-        
+        <a href="#front-page" class="brand-logo">Catnapp</a>  
+       
         <ul class="right hide-on-med-and-down">
           <li><a href="#map-page">View Spaces</a></li>
           <li><a href="#host-page">Create Spaces</a></li>
@@ -19,14 +18,17 @@
           <% end %>
         </ul>
        
-        <ul class="side-nav" id="mobile-demo">
-          <li><a href="#new_space">Create Spaces</a></li>
+        <ul id="slide-out" class="side-nav">
+          <li><a href="#map-page">View Spaces</a></li>
+          <li><a href="#host-page">Create Spaces</a></li>
+          <li><a href="#about">About</a></li>
           <% if user_signed_in? %>
             <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
           <% else %>
             <li><%= link_to('Login', new_user_session_path)  %></li>
           <% end %>
         </ul>
+        <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
       </div>
     </nav>
   </nav>

@@ -1,5 +1,6 @@
 var map;
 
+// On load
 $(function (){
 	// Get the current position of your device and render map.
 	navigator.geolocation.getCurrentPosition(renderMap);
@@ -7,6 +8,8 @@ $(function (){
 	$('form#new_space').on('submit', createSpace);
 });
 
+//Use ajax call to get lat/lng from the server and place a marker on location.
+//Results is an array of objects that have been created from our create space form.
 function loadSpaces(){
 
 	$.ajax({
@@ -29,18 +32,26 @@ function loadSpaces(){
 	});
 } 
 
+// Event in this case is a jquery event that reacts to the submit button on the form.
 function createSpace(event){
 	console.log(event);
 
 	event.preventDefault();
 	var newSpaceForm = $('form#new_space');
 	if (event) { event.preventDefault(); }
+		//Set up geocoder
+		//Find the inputted address and if it has been found (Geocoderstatus.OK) then find the lat/lng.
+
 		geocoder = new google.maps.Geocoder();
 		geocoder.geocode ({ 'address' : newSpaceForm.find('#space_address').val()}, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
 				newSpaceForm.find('#space_lat').val(results[0].geometry.location.lat());
 				newSpaceForm.find('#space_lng').val(results[0].geometry.location.lng());
-			
+				
+				//Serialize a form to a query string that could be sent to a server in an Ajax request.
+				//Clear out form 
+				//On submit click go to the map-page div 
+				//Place marker on lat/lng of address
 				$.ajax({
 					url: '/spaces',
 					type: 'POST',
@@ -62,11 +73,14 @@ function createSpace(event){
 				});
 			} else {
 			// Error condition
+			// Triggers when no address is supplied.
 			alert('Something went wrong');
 			}
 	})
 }
 
+//Draw map around users current location.
+//Position is a geoposition with lat/lng and timestamp.
 function renderMap(position){
 
 	console.log(position);
@@ -81,15 +95,16 @@ function renderMap(position){
 	};
 
 	// Create a JavaScript "map" object, passing it the div element and the map properties.
-	// map is a global variable
+	// Map is a global variable
 	map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
+	// Marker for users current location.
 	var markerMe = new google.maps.Marker({
 		position: currentLocation,
 		map: map
 	});
 
-	// We use an event listener to load the map after the page has loaded.
+	// Event listener to load the map after the page has loaded.
 	google.maps.event.addListenerOnce(map, 'bounds_changed', loadSpaces);
 
 	// Drawing a circle around our current location. FUN!
@@ -107,6 +122,10 @@ function renderMap(position){
 	var circle = new google.maps.Circle(circleOptions);
 }
 
+// clickEvent will trigger after the ajax call in createSpace.
+// Append form information on submit to the map div.
+// Slide map out of the way and show the space_info.
+// When user clicks the x, hide the space_info and slide the map back into view.
 function clickEvent(result, marker) {
 
 	google.maps.event.addListener(marker, 'click', function() {

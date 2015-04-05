@@ -1,4 +1,5 @@
 // Responsive design
+// Initialize collapse button
 $(function (){
 	$(".button-collapse").sideNav();
 });
